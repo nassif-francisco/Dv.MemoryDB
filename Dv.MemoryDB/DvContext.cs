@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -19,6 +20,20 @@ namespace Dv.MemoryDB
                 _instance = new DvContext();
             }
             return _instance;
+        }
+
+        public static void CreateObjectsRuntime(string runtimeObject, Dictionary<string, object> properties)
+        {
+            Assembly assembly = Assembly.GetExecutingAssembly();
+            DvTable? currentTable = (DvTable)assembly?.CreateInstance(runtimeObject);
+            Type? currentType = currentTable?.GetType();
+            foreach (KeyValuePair<string, object> entry in properties)
+            {
+                PropertyInfo? propInfo = currentType?.GetProperty(entry.Key);
+                propInfo?.SetValue(currentTable, entry.Value);
+            }
+            currentTable?.Save(currentTable);
+            int a = 0;
         }
 
         public static int UpdateContext(object instance)

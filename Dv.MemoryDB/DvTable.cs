@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Dv.MemoryDB
 {
-    public class DvTable
+    public class DvTable : IDvTable<DvTable>
     {
         private string _name;
         public string Name { get => _name; set => _name = value; }
@@ -51,6 +51,10 @@ namespace Dv.MemoryDB
             _name = name;
 
         }
+        public DvTable()
+        {
+
+        }
 
         public void AddColumnToTable<T>(DvColumn<T> column) where T : DvColumn<T>
         {
@@ -66,6 +70,16 @@ namespace Dv.MemoryDB
         {
             Rows.Add(dvRow);
         }
+
+        //public object GetObject(DvRow dvRow)
+        //{
+
+        //}
+
+        //public DvRow ReadStringObject(string dvObject)
+        //{
+
+        //}
 
         public void Save(Object instance)
         {
