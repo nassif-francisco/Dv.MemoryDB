@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -22,10 +23,23 @@ namespace Dv.MemoryDB
             return _instance;
         }
 
-        public static void CreateObjectsRuntime(string runtimeObject, Dictionary<string, object> properties)
+        [System.Runtime.CompilerServices.MethodImpl(MethodImplOptions.NoInlining)]
+        public static string GetCurrentNamespace()
         {
-            Assembly assembly = Assembly.GetExecutingAssembly();
-            DvTable? currentTable = (DvTable)assembly?.CreateInstance(runtimeObject);
+            return Assembly.GetCallingAssembly().EntryPoint.DeclaringType.Namespace;
+        }
+
+        public static IEnumerable<Assembly> GetDvAssemblies()
+        {
+            Assembly[] assemblies = AppDomain.CurrentDomain.GetAssemblies();
+            var dvAssemblies = assemblies.Where(a => a.FullName.Contains("System").Equals(false));
+            return dvAssemblies;
+        }
+
+        public static void CreateObjectsRuntime(Assembly? runtimeObjectAssembly, string? runtimeObject, Dictionary<string, object> properties)
+        {
+            //Assembly assembly = Assembly.GetExecutingAssembly();
+            DvTable? currentTable = (DvTable)runtimeObjectAssembly?.CreateInstance(runtimeObject);
             Type? currentType = currentTable?.GetType();
             foreach (KeyValuePair<string, object> entry in properties)
             {
