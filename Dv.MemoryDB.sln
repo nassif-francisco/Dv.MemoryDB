@@ -5,7 +5,9 @@ VisualStudioVersion = 17.4.33122.133
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dv.MemoryDB", "Dv.MemoryDB\Dv.MemoryDB.csproj", "{95F605D7-72DB-45B6-9687-40BC40AE16A7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MainProgram", "MainProgram\MainProgram.csproj", "{CD489CE8-AF8E-4EC8-B796-7BCA49E837B7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MainProgram", "MainProgram\MainProgram.csproj", "{CD489CE8-AF8E-4EC8-B796-7BCA49E837B7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dv.IOFileManager", "Dv.IOFileManager\Dv.IOFileManager.csproj", "{F67A9719-AF1A-46EF-A7E7-1A6AADE17BB8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{CD489CE8-AF8E-4EC8-B796-7BCA49E837B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CD489CE8-AF8E-4EC8-B796-7BCA49E837B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CD489CE8-AF8E-4EC8-B796-7BCA49E837B7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F67A9719-AF1A-46EF-A7E7-1A6AADE17BB8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F67A9719-AF1A-46EF-A7E7-1A6AADE17BB8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F67A9719-AF1A-46EF-A7E7-1A6AADE17BB8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F67A9719-AF1A-46EF-A7E7-1A6AADE17BB8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
