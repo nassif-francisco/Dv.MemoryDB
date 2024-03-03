@@ -23,6 +23,8 @@ namespace Dv.IOFileManager
         public string? Class { get; private set; }
         public string? FileContent { get; private set; }
 
+        public string? LineContent { get; private set; }
+
         public async Task<string> ReadCsvFile()
         {
             try
@@ -39,24 +41,19 @@ namespace Dv.IOFileManager
             return FileContent;
         }
 
-        public async IAsyncEnumerable<string> ReadCsvFileLineAsync()
+        public async IAsyncEnumerable<string> ReadCsvFileLineByLineAsync()
         {
-            //try
-            //{
-                using (var sr = new StreamReader(Path))
+            //can not be enclosed in try/catch block
+            using (var sr = new StreamReader(Path))
+            {
+                while (sr.Peek() >= 0)
                 {
-                    while (sr.Peek() >= 0)
-                    {
-                        FileContent = await sr.ReadLineAsync();
-                        yield return FileContent;
-                    }
-                     
+                    LineContent = await sr.ReadLineAsync();
+                    yield return LineContent;
                 }
-            //}
-            //catch (FileNotFoundException ex)
-            //{
-            //    FileContent = ex.Message;
-            //}
+                     
+            }
+
         }
 
         public IEnumerable<string> ReadCsvFileLine()

@@ -50,6 +50,23 @@ namespace Dv.MemoryDB
             int a = 0;
         }
 
+        public static void CreateObjectRuntimeFromPropertyList(Assembly? runtimeObjectAssembly, string? runtimeObject, string[] objectProperties, object[] objectValues)
+        { 
+            DvTable? currentTable = (DvTable)runtimeObjectAssembly?.CreateInstance(runtimeObject);
+            Type? currentType = currentTable?.GetType();
+
+            int j = 0;
+            foreach(string property in objectProperties)
+            {
+                PropertyInfo? propInfo = currentType?.GetProperty(property);
+                propInfo?.SetValue(currentTable, objectValues[j]);
+                j++;
+            }
+            
+            currentTable?.Save(currentTable);
+            int a = 0;
+        }
+
         public static int UpdateContext(object instance)
         {
             //check if ContextNode exists for the instance's type
