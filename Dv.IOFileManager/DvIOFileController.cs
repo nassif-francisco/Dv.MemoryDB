@@ -45,8 +45,12 @@ namespace Dv.IOFileManager
             //{
                 using (var sr = new StreamReader(Path))
                 {
-                    FileContent = await sr.ReadLineAsync();
-                    yield return FileContent;
+                    while (sr.Peek() >= 0)
+                    {
+                        FileContent = await sr.ReadLineAsync();
+                        yield return FileContent;
+                    }
+                     
                 }
             //}
             //catch (FileNotFoundException ex)

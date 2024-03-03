@@ -80,7 +80,7 @@ class TestClass
     {
         DvIOFileController<Users> dvIOFileController = new DvIOFileController<Users>("C:\\Dv.MemoryDB\\Users.csv");
         var fileContent = dvIOFileController.ReadCsvFileLine();
-        foreach(string st in dvIOFileController.ReadCsvFileLine())
+        await foreach(string st in dvIOFileController.ReadCsvFileLineAsync())
         {
             Console.WriteLine(st);
         }
