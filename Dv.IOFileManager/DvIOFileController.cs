@@ -11,7 +11,7 @@ using Dv.MemoryDB;
 
 namespace Dv.IOFileManager
 {
-    public class DvIOFileController<T> where T: DvTable
+    public class DvIOFileController//<T> where T: DvTable
     {
         public DvIOFileController(string path)
         {
@@ -24,6 +24,8 @@ namespace Dv.IOFileManager
         public string? FileContent { get; private set; }
 
         public string? LineContent { get; private set; }
+
+        public StreamReader StreamReader { get; private set; }
 
         public async Task<string> ReadCsvFile()
         {
@@ -40,15 +42,41 @@ namespace Dv.IOFileManager
             }
             return FileContent;
         }
+        
+        public void InitializeStreamReader()
+        {
+            try
+            {
+                StreamReader = new StreamReader(Path);
+                
+            }
+            catch
+            {
+                Console.WriteLine("Can not find file");
+            }
+            
+        }
+
+        public async Task<string> ReadCsvFirstLine()
+        {                      
+            LineContent = await StreamReader.ReadLineAsync();
+            return LineContent;         
+        }
+
+        public async Task<string> ReadCsvParametersLine()
+        {         
+            LineContent = await StreamReader.ReadLineAsync();
+            return LineContent;          
+        }
 
         public async IAsyncEnumerable<string> ReadCsvFileLineByLineAsync()
         {
             //can not be enclosed in try/catch block
-            using (var sr = new StreamReader(Path))
+            using (StreamReader)
             {
-                while (sr.Peek() >= 0)
+                while (StreamReader.Peek() >= 0)
                 {
-                    LineContent = await sr.ReadLineAsync();
+                    LineContent = await StreamReader.ReadLineAsync();
                     yield return LineContent;
                 }
                      

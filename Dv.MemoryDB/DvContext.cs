@@ -50,7 +50,7 @@ namespace Dv.MemoryDB
             int a = 0;
         }
 
-        public static void CreateObjectRuntimeFromPropertyList(Assembly? runtimeObjectAssembly, string? runtimeObject, string[] objectProperties, object[] objectValues)
+        public static void CreateObjectRuntimeFromPropertyArray(Assembly? runtimeObjectAssembly, string? runtimeObject, string[] objectProperties, object[] objectValues)
         { 
             DvTable? currentTable = (DvTable)runtimeObjectAssembly?.CreateInstance(runtimeObject);
             Type? currentType = currentTable?.GetType();
