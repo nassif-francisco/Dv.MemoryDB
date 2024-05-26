@@ -10,6 +10,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Dv.IOFileManager\Dv.IOFileManager.csproj" />
     <ProjectReference Include="..\Dv.MemoryDB\Dv.MemoryDB.csproj" />
+    <ProjectReference Include="..\DvImplementation\DvImplementation.csproj" />
   </ItemGroup>
 
 </Project>

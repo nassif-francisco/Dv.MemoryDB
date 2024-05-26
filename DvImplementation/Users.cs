@@ -1,14 +1,8 @@
 ﻿using Dv.MemoryDB;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml.Linq;
 
-namespace MainProgram
+namespace Dv.Implementation
 {
-    internal class Users : DvTable
+    public class Users : DvTable
     {
         public string Username { get; set; }
 
