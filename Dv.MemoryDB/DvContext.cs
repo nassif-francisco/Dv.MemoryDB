@@ -79,7 +79,7 @@ namespace Dv.MemoryDB
                 if (tb.Name == instance.GetType().Name)
                 {
                     DvTable table = (DvTable)instance;
-                    tb.Rows.Add(table.Rows?.FirstOrDefault());
+                    tb.Rows.Add(table?.Rows?.FirstOrDefault());
                     //tb = instance;
                     //check if schema changed
                     //cn.UpdateContextNode(dvRow);
