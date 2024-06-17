@@ -11,7 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dv.IOFileManager", "Dv.IOFi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dv.MemoryDB.Tests", "Dv.MemoryDB.Tests\Dv.MemoryDB.Tests.csproj", "{5CBF71B2-BA19-49B3-876F-DB4D05F60407}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DvImplementation", "DvImplementation\DvImplementation.csproj", "{3286535F-9D14-41E7-9F24-C144D2BC83DC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DvImplementation", "DvImplementation\DvImplementation.csproj", "{6F195EF7-58F1-46D5-B5C5-0531F8A1DD3A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,10 +35,10 @@ Global
 		{5CBF71B2-BA19-49B3-876F-DB4D05F60407}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5CBF71B2-BA19-49B3-876F-DB4D05F60407}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5CBF71B2-BA19-49B3-876F-DB4D05F60407}.Release|Any CPU.Build.0 = Release|Any CPU
-		{3286535F-9D14-41E7-9F24-C144D2BC83DC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3286535F-9D14-41E7-9F24-C144D2BC83DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3286535F-9D14-41E7-9F24-C144D2BC83DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3286535F-9D14-41E7-9F24-C144D2BC83DC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6F195EF7-58F1-46D5-B5C5-0531F8A1DD3A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6F195EF7-58F1-46D5-B5C5-0531F8A1DD3A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6F195EF7-58F1-46D5-B5C5-0531F8A1DD3A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6F195EF7-58F1-46D5-B5C5-0531F8A1DD3A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

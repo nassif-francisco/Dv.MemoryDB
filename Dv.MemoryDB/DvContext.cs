@@ -46,7 +46,7 @@ namespace Dv.MemoryDB
                 PropertyInfo? propInfo = currentType?.GetProperty(entry.Key);
                 propInfo?.SetValue(currentTable, entry.Value);
             }
-            currentTable?.Save(currentTable);
+            currentTable?.Save();
             int a = 0;
         }
 
@@ -63,7 +63,7 @@ namespace Dv.MemoryDB
                 j++;
             }
             
-            currentTable?.Save(currentTable);
+            currentTable?.Save();
             int a = 0;
         }
 
@@ -78,7 +78,8 @@ namespace Dv.MemoryDB
                 //Console.WriteLine("{0}={1}", prop.Name, prop.GetValue(instance, null));
                 if (tb.Name == instance.GetType().Name)
                 {
-                    //tb.Rows.Add(instance);
+                    DvTable table = (DvTable)instance;
+                    tb.Rows.Add(table.Rows?.FirstOrDefault());
                     //tb = instance;
                     //check if schema changed
                     //cn.UpdateContextNode(dvRow);
@@ -111,7 +112,7 @@ namespace Dv.MemoryDB
         private static void CreateTableAndAddToList(object instance)
         {
             DvContext.GetTables().Add((DvTable)instance);
-            UpdateContext(instance);
+            //UpdateContext(instance);
         }
 
         private static List<DvTable> DvTables;

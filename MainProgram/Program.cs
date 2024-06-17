@@ -11,7 +11,8 @@ class TestClass
     {
 
         //TestReadObjectRuntime();
-        TestReadFileAsync();
+        //TestReadFileAsync();
+        TestSaveObjectRuntime();
        
     }
 
@@ -97,10 +98,13 @@ class TestClass
         //PART 1 Save objects at runtime
         Users user = new Users("Vegeta");
         user.ID = 1;
-        user.Save(user);
+        user.Save();
 
         Users user2 = new Users("Goku");
         user2.ID = 2;
-        user2.Save(user2);
+        user2.Save();
+
+        var context = DvContext.GetTables();
+        int a = 0;
     }
 }

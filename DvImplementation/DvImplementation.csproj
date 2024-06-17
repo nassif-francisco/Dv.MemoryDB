@@ -6,4 +6,9 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Dv.IOFileManager\Dv.IOFileManager.csproj" />
+    <ProjectReference Include="..\Dv.MemoryDB\Dv.MemoryDB.csproj" />
+  </ItemGroup>
+
 </Project>

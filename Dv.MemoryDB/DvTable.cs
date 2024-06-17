@@ -81,9 +81,9 @@ namespace Dv.MemoryDB
 
         //}
 
-        public void Save(Object instance)
+        public void Save()
         {
-
+            object instance = (object)this;
             var someType = instance.GetType();
             DvRow instancex = new DvRow(someType.Name);
             foreach (var prop in instance.GetType().GetProperties())
