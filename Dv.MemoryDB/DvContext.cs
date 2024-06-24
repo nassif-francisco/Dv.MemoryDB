@@ -84,6 +84,18 @@ namespace Dv.MemoryDB
                         tb.Rows.Add(row);
                     }
                     
+                    foreach (var column in table?.Columns)
+                    {
+                        foreach(var col in tb?.Columns )
+                        {
+                            if(col.Name == column.Name)
+                            {
+                                col.Rows.Add(new DvCell(column.Rows[0]));
+                            }
+                        }
+
+                    }
+                    
                     //tb = instance;
                     //check if schema changed
                     //cn.UpdateContextNode(dvRow);

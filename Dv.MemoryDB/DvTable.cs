@@ -99,23 +99,23 @@ namespace Dv.MemoryDB
                 var propType = prop.PropertyType;
                 IDvColumn dvcolumnx = new IDvColumn();
                 DvTable? currentDvTable = DvContext.IsalreadyIncontext(instance);
-                if (currentDvTable == null)
-                {
-                    dvcolumnx = (IDvColumn)Activator.CreateInstance(typeof(DvColumn<>).MakeGenericType(propType));
-                    dvcolumnx.Name = prop.Name;
-                    AddColumnToTable(dvcolumnx);
-                }
-                else
-                {
-                    foreach(var cl in currentDvTable.Columns)
-                    {
-                        if(prop.Name == cl.Name)
-                        {
-                            dvcolumnx = cl;
-                            break;
-                        }
-                    }
-                }
+                //if (currentDvTable == null)
+                //{
+                dvcolumnx = (IDvColumn)Activator.CreateInstance(typeof(DvColumn<>).MakeGenericType(propType));
+                dvcolumnx.Name = prop.Name;
+                AddColumnToTable(dvcolumnx);
+                //}
+                //else
+                //{
+                //    foreach(var cl in currentDvTable.Columns)
+                //    {
+                //        if(prop.Name == cl.Name)
+                //        {
+                //            dvcolumnx = cl;
+                //            break;
+                //        }
+                //    }
+                //}
 
                 dvcolumnx.Rows.Add(new DvCell(prop.GetValue(instance, null)));
                 instancex.Dvcolumns.Add(dvcolumnx);
