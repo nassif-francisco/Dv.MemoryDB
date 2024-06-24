@@ -104,6 +104,10 @@ class TestClass
         user2.ID = 2;
         user2.Save();
 
+        Users user3 = new Users("Trunks");
+        user3.ID = 45;
+        user3.Save();
+
         var context = DvContext.GetTables();
         int a = 0;
     }

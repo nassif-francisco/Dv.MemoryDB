@@ -84,45 +84,28 @@ namespace Dv.MemoryDB
         public void Save()
         {
             object instance = (object)this;
-            var someType = instance.GetType();
-            DvRow instancex = new DvRow(someType.Name);
+            var instanceType = instance.GetType();
+            DvRow newDvRow = new DvRow(instanceType.Name);
             foreach (var prop in instance.GetType().GetProperties())
             {
-
                 if (prop.Name == "Name" || prop.Name == "Columns" || prop.Name == "Rows")
                 {
                     continue;
                 }
-                //DvRow instancex = (DvRow)Activator.CreateInstance(someType);
                 Console.WriteLine("{0}={1}", prop.Name, prop.GetValue(instance, null));
-                instancex.Columns.Add(prop.Name, prop.GetValue(instance, null));
+                newDvRow.Columns.Add(prop.Name, prop.GetValue(instance, null));
                 var propType = prop.PropertyType;
-                IDvColumn dvcolumnx = new IDvColumn();
+                IDvColumn newDvColumn = new IDvColumn();
                 DvTable? currentDvTable = DvContext.IsalreadyIncontext(instance);
-                //if (currentDvTable == null)
-                //{
-                dvcolumnx = (IDvColumn)Activator.CreateInstance(typeof(DvColumn<>).MakeGenericType(propType));
-                dvcolumnx.Name = prop.Name;
-                AddColumnToTable(dvcolumnx);
-                //}
-                //else
-                //{
-                //    foreach(var cl in currentDvTable.Columns)
-                //    {
-                //        if(prop.Name == cl.Name)
-                //        {
-                //            dvcolumnx = cl;
-                //            break;
-                //        }
-                //    }
-                //}
 
-                dvcolumnx.Rows.Add(new DvCell(prop.GetValue(instance, null)));
-                instancex.Dvcolumns.Add(dvcolumnx);
+                newDvColumn = (IDvColumn)Activator.CreateInstance(typeof(DvColumn<>).MakeGenericType(propType));
+                newDvColumn.Name = prop.Name;
+                AddColumnToTable(newDvColumn);           
 
-                //int repsonse = DvContext.AddToContext(instance);
+                newDvColumn.Rows.Add(new DvCell(prop.GetValue(instance, null)));
+                newDvRow.Dvcolumns.Add(newDvColumn);
             }
-            Rows.Add(instancex);
+            Rows.Add(newDvRow);
             DvContext.UpdateContext(instance);
         }
     }

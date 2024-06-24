@@ -78,13 +78,12 @@ namespace Dv.MemoryDB
                 //Console.WriteLine("{0}={1}", prop.Name, prop.GetValue(instance, null));
                 if (tb.Name == instance.GetType().Name)
                 {
-                    DvTable table = (DvTable)instance;
-                    foreach(var row in table?.Rows)
-                    {
-                        tb.Rows.Add(row);
-                    }
+                    DvTable objectTable = (DvTable)instance;
                     
-                    foreach (var column in table?.Columns)
+                    tb.Rows.Add(objectTable?.Rows[0]);
+                    
+                    
+                    foreach (var column in objectTable?.Columns)
                     {
                         foreach(var col in tb?.Columns )
                         {
@@ -93,7 +92,6 @@ namespace Dv.MemoryDB
                                 col.Rows.Add(new DvCell(column.Rows[0]));
                             }
                         }
-
                     }
                     
                     //tb = instance;
